@@ -1,4 +1,4 @@
-# Youdao Comandline tools
+# Youdao Commandline tools
 
 The youdao-cl is a script for translate words and sentence, translating by Youdao.
 
