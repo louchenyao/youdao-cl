@@ -20,14 +20,14 @@ else:
 import argparse
 import json
 
-def query(word):
+def query(words):
     params = {
         "keyfrom": "wordstash",
         "key": "908579755",
         "type": "data",
         "doctype": "json",
         "version": "1.1",
-        "q": word,
+        "q": words,
     }
     
     url = "/openapi.do?" + urlencode(params)
@@ -78,8 +78,8 @@ def main(word):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("word")
+    parser.add_argument("words", nargs="+")
     args = parser.parse_args()
 
-    word = args.word
-    main(word)
+    words = " ".join(args.words)
+    main(words)
