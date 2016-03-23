@@ -3,6 +3,7 @@
 
 from __future__ import print_function
 
+import os
 import sys
 
 if sys.version_info[0] == 2:
@@ -78,8 +79,13 @@ def main(word):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("words", nargs="+")
+    parser.add_argument("words")
     args = parser.parse_args()
+    words = args.words
 
-    words = " ".join(args.words)
-    main(words)
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    history_path = os.path.join(base_dir, "history.log")
+    with open(history_path, "a") as f:
+        f.write("%s\n" % words)
+
+    main(args.words)
